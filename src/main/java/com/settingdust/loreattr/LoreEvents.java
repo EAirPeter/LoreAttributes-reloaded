@@ -8,6 +8,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class LoreEvents
@@ -46,5 +47,13 @@ public class LoreEvents
             event.setCancelled(true);
             return;
         }
+    }
+    
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerInteract(PlayerInteractEvent event) {
+    	if (!LoreAttributes.loreManager.canUse(event.getPlayer(), event.getItem())) {
+    		event.setCancelled(true);
+    		return;
+    	}
     }
 }
