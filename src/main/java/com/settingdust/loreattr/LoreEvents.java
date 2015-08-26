@@ -49,7 +49,7 @@ public class LoreEvents
         }
     }
     
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerInteract(PlayerInteractEvent event) {
     	if (!LoreAttributes.loreManager.canUse(event.getPlayer(), event.getItem())) {
     		event.setCancelled(true);
